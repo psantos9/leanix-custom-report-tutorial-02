@@ -1,0 +1,48 @@
+{
+  "name": "leanix-custom-report-tutorial-02",
+  "version": "1.0.0",
+  "description": "Tutorial on how to query workspace data from a custom report",
+  "engines": {
+    "node": ">=12.16.2"
+  },
+  "leanixReport": {
+    "id": "net.leanix.reporting.tutorial.02",
+    "title": "Tutorial 02: querying workspace data from a custom report",
+    "defaultConfig": {}
+  },
+  "scripts": {
+    "build": "lxr build",
+    "start": "lxr start",
+    "upload": "lxr upload",
+    "webpack": "webpack"
+  },
+  "keywords": [
+    "leanix",
+    "custom-report"
+  ],
+  "author": "LeanIX GmbH",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^3.2.0",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@leanix/reporting": "^0.3.3",
+    "alpinejs": "^2.3.5",
+    "lodash": "^4.17.11",
+    "postcss-loader": "^3.0.0",
+    "tailwindcss": "^1.4.6"
+  }
+}

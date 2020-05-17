@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="application-name" content="leanix-custom-report-tutorial-02">
+  <meta name="description" content="Tutorial on how to query workspace data from a custom report">
+  <meta name="author" content="LeanIX GmbH">
+
+  <title>Tutorial 02: querying workspace data from a custom report</title>
+
+</head>
+<body
+  x-data="initializeContext()"
+  x-init="() => {
+    initializeReport()
+    $watch('facetResultIndex', index => computeGridCells('facet', index))
+    $watch('graphqlResultIndex', index => computeGridCells('graphql', index))
+    factSheetTypes.forEach(factSheetType => fetchGraphQLData(factSheetType))
+  }">
+  <div class="container mx-auto text-md text-gray-800">
+    <div class="flex flex-wrap items-start justify-center mt-16 -mx-8 pt-16">
+      <template x-for="channel of channels">
+        <div class="flex flex-col items-center justify-center px-8">
+          <span class="text-3xl font-bold uppercase py-4" x-text="channel.label"></span>
+          <div class="grid grid-cols-3 text-center border-r border-b">
+            <span class="p-2 font-bold uppercase border-l border-t bg-gray-200">FactSheet Type</span>
+            <span class="p-2 font-bold uppercase border-l border-t bg-gray-200">Count</span>
+            <span class="p-2 font-bold uppercase border-l border-t bg-gray-200">Completion</span>
+            <template x-for="cell of cellIndex[channel.key] || []">
+              <span class="p-2 border-l border-t" x-text="cell"></span>
+            </template>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</body>
+</html>
