@@ -18,8 +18,8 @@ const methods = {
     const setup = await lx.init()
     this.baseUrl = setup.settings.baseUrl
     const facets = this.factSheetTypes
-      .map((factSheetType, i) => ({
-        key: i,
+      .map((factSheetType, key) => ({
+        key,
         fixedFactSheetType: factSheetType,
         attributes: ['completion{completion}'],
         callback: factSheets => {
@@ -32,14 +32,20 @@ const methods = {
             averageCompletion
           ]
           this.facetResultIndex = { ...this.facetResultIndex, [factSheetType]: facetResult }
-        }
+        },
+        facetFiltersChangedCallback: filter => this.fetchGraphQLData(factSheetType, filter)
       }))
     const config = { facets }
     return lx.ready(config)
   },
-  async fetchGraphQLData (factSheetType) {
-    const query = 'query($factSheetType:FactSheetType){allFactSheets(factSheetType:$factSheetType){edges{node{completion{completion}}}}}'
-    const queryResult = await lx.executeGraphQL(query, { factSheetType })
+  async fetchGraphQLData (factSheetType, filter) {
+    // Destructing assignment of filter object with alias for facets and fullTextSearch attributes
+    const { facets: facetFilters, fullTextSearchTerm: fullTextSearch, directHits } = filter
+
+    const mappedFilter = { facetFilters, fullTextSearch, ids: directHits.map(({ id }) => id) }
+
+    const query = 'query($filter:FilterInput){allFactSheets(filter:$filter){edges{node{completion{completion}}}}}'
+    const queryResult = await lx.executeGraphQL(query, { filter: mappedFilter })
     .then(({ allFactSheets }) => {
       const factSheets = allFactSheets.edges.map(({ node }) => node)
       const factSheetCount = factSheets.length
