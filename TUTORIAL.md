@@ -1,4 +1,4 @@
-# TUTORIAL 2: Querying workspace data from a custom report
+# TUTORIAL 02: Querying workspace data from a custom report
 
 Custom reports are a great way for analyzing and communicating Enterprise Architecture insights of your organization in an effective way.
 
@@ -136,7 +136,7 @@ And finally edit the *index.html* file as follows:
   </body>
 </html>
 ```
-As you may have noticed, we have declared row [Alpine JS](https://github.com/alpinejs/alpine#learn) directives in the <code>body</code> tag of our HTML code, the [x-data](https://github.com/alpinejs/alpine#x-data) and the [x-init](https://github.com/alpinejs/alpine#x-init). The  [x-data](https://github.com/alpinejs/alpine#x-data) directive calls the global method *initializeContext*, declared in the *index.js* file, and sets the scope for our report. More specifically, the [x-data](https://github.com/alpinejs/alpine#x-data) directive makes available to our AlpineJS instance all the variables and methods that are declared in the *state* and *methods* attributes of our *index.js* file. On the other hand, the [x-init](https://github.com/alpinejs/alpine#x-init) directive triggers the *initializeReport* method, defined in the *index.js* file, once the report is initialized.
+As you may have noticed, we have declared two [Alpine JS](https://github.com/alpinejs/alpine#learn) directives in the <code>body</code> tag of our HTML code, the [x-data](https://github.com/alpinejs/alpine#x-data) and the [x-init](https://github.com/alpinejs/alpine#x-init). The  [x-data](https://github.com/alpinejs/alpine#x-data) directive calls the global method *initializeContext*, declared in the *index.js* file, and sets the scope for our report. More specifically, the [x-data](https://github.com/alpinejs/alpine#x-data) directive makes available to our AlpineJS instance all the variables and methods that are declared in the *state* and *methods* attributes of our *index.js* file. On the other hand, the [x-init](https://github.com/alpinejs/alpine#x-init) directive triggers the *initializeReport* method, defined in the *index.js* file, once the report is initialized.
 
 You may start the development server now by running the following command:
 ```bash
@@ -144,9 +144,7 @@ npm start
 ```
 **Note!**
 
-When you run *npm start*, a local webserver is hosted on *localhost:8080*
-
-that allows connections via HTTPS. But since just a development SSL certificate is created the browser might show a warning that the connection is not secure. You could either allow connections to this host anyways, or create your own self-signed certificate: https://www.tonyerwin.com/2014/09/generating-self-signed-ssl-certificates.html#MacKeyChainAccess.
+When you run *npm start*, a local webserver is hosted on *localhost:8080* that allows connections via HTTPS. But since just a development SSL certificate is created the browser might show a warning that the connection is not secure. You could either allow connections to this host anyways, or create your own self-signed certificate: https://www.tonyerwin.com/2014/09/generating-self-signed-ssl-certificates.html#MacKeyChainAccess.
 
 If you decide to add a security exception to your localhost, make sure you open a second browser tab and point it to https://localhost:8080. Once the security exception is added to your browser, reload the original url of your development server and open the development console. Your should see a screen similar to the one below:
 <div  style="display:flex; justify-content:center">
