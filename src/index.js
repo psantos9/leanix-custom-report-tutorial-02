@@ -9,14 +9,13 @@ const state = {
   ],
   factSheetTypes: ['Application', 'ITComponent', 'BusinessCapability'],
   facetResultIndex: {},
-  graphqlResultIndex: {},
+  graphQLResultIndex: {},
   cellIndex: {}
 }
 
 const methods = {
   async initializeReport () {
-    const setup = await lx.init()
-    this.baseUrl = setup.settings.baseUrl
+    await lx.init()
     const facets = this.factSheetTypes
       .map((factSheetType, key) => ({
         key,
@@ -57,7 +56,7 @@ const methods = {
         averageCompletion
       ]
     })
-    this.graphqlResultIndex = { ...this.graphqlResultIndex, [factSheetType]: queryResult }
+    this.graphQLResultIndex = { ...this.graphQLResultIndex, [factSheetType]: queryResult }
   },
   computeGridCells (origin, index) {
     const cells = Object.entries(index)
