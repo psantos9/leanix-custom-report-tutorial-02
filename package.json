@@ -41,7 +41,7 @@
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@leanix/reporting": "^0.3.3",
     "alpinejs": "^2.3.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "postcss-loader": "^3.0.0",
     "tailwindcss": "^1.4.6"
   }
